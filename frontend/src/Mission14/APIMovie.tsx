@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Movie } from './Movie';
 
 function MovieAPI() {
   const [movieData, setMovieData] = useState<Movie[]>([]);
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const rsp = await fetch('https://localhost:4000/movie');
-      const temp = await rsp.json();
-      setMovieData(temp);
-    };
-    fetchMovies();
-  }, []);
+  const fetchMovies = async () => {
+    const rsp = await fetch('https://localhost:4000/movie');
+    const temp = await rsp.json();
+    setMovieData(temp);
+  };
+  fetchMovies();
+
   // this component makes a table and connects with the api that comes from the asp.net backend
   return (
     <>
